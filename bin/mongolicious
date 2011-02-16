@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'rubygems'
+require 'rufus/scheduler'
+require 'fog'
+
+require 'mongolicious'
+require 'mongolicious/backup'
+
+begin
+  exit Mongolicious::Backup.new(ARGV[0])
+rescue
+  puts "Please provide a job file."
+end

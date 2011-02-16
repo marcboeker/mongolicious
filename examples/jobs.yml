@@ -1,0 +1,9 @@
+s3:
+  access_id: <your_s3_access_id>
+  secret_key: <your_s3_secret_key>
+
+jobs:
+  - interval: 1h
+    db: mongodb://user:password@host:port/database
+    location: bucket_name/prefix
+    versions: 5

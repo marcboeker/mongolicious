@@ -1,0 +1,42 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (3.0.0)
+    excon (0.5.2)
+    fog (0.5.3)
+      builder
+      excon (>= 0.5.2)
+      formatador (>= 0.0.16)
+      json
+      mime-types
+      net-ssh (>= 2.0.23)
+      nokogiri (>= 1.4.4)
+      ruby-hmac
+    formatador (0.0.16)
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    json (1.5.1)
+    mime-types (1.16)
+    net-ssh (2.1.0)
+    nokogiri (1.4.4)
+    rake (0.8.7)
+    rcov (0.9.9)
+    ruby-hmac (0.4.0)
+    rufus-scheduler (2.0.8)
+      tzinfo (>= 0.3.23)
+    shoulda (2.11.3)
+    tzinfo (0.3.24)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.0.0)
+  fog
+  jeweler (~> 1.5.2)
+  rcov
+  rufus-scheduler
+  shoulda
