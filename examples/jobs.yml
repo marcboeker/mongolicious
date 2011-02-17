@@ -7,3 +7,9 @@ jobs:
     db: mongodb://user:password@host:port/database
     location: bucket_name/prefix
     versions: 5
+
+  - interval: 1d
+    db: mongodb://user:password@host:port/database2
+    location: bucket_name/prefix_db2
+    versions: 2
+                                              
