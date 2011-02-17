@@ -49,6 +49,16 @@ Simple call the mongolicious bin with the jobs.yml file as argument.
 This will start the scheduler and run the backup jobs as defined in the jobs.yml file. You can put the process into background or run it in a screen terminal.
 
     screen mongolicious jobs.yml
+    
+## Todo
+
+### Near
+* Add testcases.
+* Catch Ctrl + C.
+* Add more configuration examples.
+
+### Far
+* Add multiple storage engines (Rackspace Files, Google Storage...)
 
 ## Contributing to mongolicious
  
