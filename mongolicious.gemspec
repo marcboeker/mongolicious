@@ -5,28 +5,35 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mongolicious}
-  s.version = "0.1.0"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc Boeker"]
-  s.date = %q{2011-02-16}
+  s.date = %q{2011-02-17}
   s.default_executable = %q{mongolicious}
   s.description = %q{Mongolicious helps you to handle periodic backup jobs of your Mongo database. The database will be dumped using "mongodump", bzipped and uploaded to your S3 bucket.}
   s.email = %q{marc@at6.net}
   s.executables = ["mongolicious"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
-    "README.rdoc"
+    "README.md"
   ]
   s.files = [
     ".document",
     "Gemfile",
+    "Gemfile.lock",
     "LICENSE.txt",
-    "README.rdoc",
+    "README.md",
     "Rakefile",
     "VERSION",
+    "bin/mongolicious",
+    "examples/jobs.yml",
     "lib/mongolicious.rb",
     "lib/mongolicious/backup.rb",
+    "lib/mongolicious/db.rb",
+    "lib/mongolicious/filesystem.rb",
+    "lib/mongolicious/storage.rb",
+    "mongolicious.gemspec",
     "test/helper.rb",
     "test/test_mongolicious.rb"
   ]
@@ -50,8 +57,6 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_development_dependency(%q<rcov>, [">= 0"])
-      s.add_runtime_dependency(%q<fog>, [">= 0"])
-      s.add_runtime_dependency(%q<rufus-scheduler>, [">= 0"])
     else
       s.add_dependency(%q<rufus-scheduler>, [">= 0"])
       s.add_dependency(%q<fog>, [">= 0"])
@@ -59,8 +64,6 @@ Gem::Specification.new do |s|
       s.add_dependency(%q<bundler>, ["~> 1.0.0"])
       s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
       s.add_dependency(%q<rcov>, [">= 0"])
-      s.add_dependency(%q<fog>, [">= 0"])
-      s.add_dependency(%q<rufus-scheduler>, [">= 0"])
     end
   else
     s.add_dependency(%q<rufus-scheduler>, [">= 0"])
@@ -69,8 +72,6 @@ Gem::Specification.new do |s|
     s.add_dependency(%q<bundler>, ["~> 1.0.0"])
     s.add_dependency(%q<jeweler>, ["~> 1.5.2"])
     s.add_dependency(%q<rcov>, [">= 0"])
-    s.add_dependency(%q<fog>, [">= 0"])
-    s.add_dependency(%q<rufus-scheduler>, [">= 0"])
   end
 end
 
