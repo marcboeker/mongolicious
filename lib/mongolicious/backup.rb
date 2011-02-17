@@ -45,7 +45,9 @@ module Mongolicious
     
       jobs.each do |job|
         Mongolicious.logger.info("Scheduled new job for #{job['db'].split('/').last} with interval #{job['interval']}")
-        scheduler.every job['interval'] { backup(job) }
+        scheduler.every job['interval'] do
+          backup(job)
+        end
       end 
     
       scheduler.join
