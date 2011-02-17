@@ -1,6 +1,6 @@
 # mongolicious
 
-Mongolicious provides an easy way to backup your Mongo datebases to S3.
+Mongolicious provides an easy way to backup your Mongo databases to S3.
 
 ## Installation
 
@@ -28,7 +28,7 @@ interval. Each job must contain the following keys:
 * **interval** - Defines the interval, the job will be executed in. This can be any numerical value followed by a quantifier like s, m, h, d for second, minute, hour, day.
 * **db** - Is a URI, that defines the database host, database name and auth credentials.
 * **location** - The location is the S3 bucket, where to put the dump and a prefix.
-* **versions** - Keep the lates X versions of the backup.
+* **versions** - Keep the latest X versions of the backup.
 
 Please consider, that the location option works like this:
 

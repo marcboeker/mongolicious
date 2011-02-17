@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{mongolicious}
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Marc Boeker"]
@@ -41,7 +41,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.5.1}
-  s.summary = %q{Provides an easy way to backup your Mongo datebases to S3.}
+  s.summary = %q{Provides an easy way to backup your Mongo databases to S3.}
   s.test_files = [
     "test/helper.rb",
     "test/test_mongolicious.rb"
