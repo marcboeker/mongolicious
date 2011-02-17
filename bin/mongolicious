@@ -7,6 +7,5 @@ require 'rufus/scheduler'
 require 'fog'
 
 require 'mongolicious'
-require 'mongolicious/backup'
 
 exit Mongolicious::Backup.new(ARGV[0])
