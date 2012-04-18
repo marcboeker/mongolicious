@@ -35,7 +35,7 @@ module Mongolicious
       Mongolicious.logger.info("Dumping database #{db[:db]}")
     
       cmd = "mongodump -d #{db[:db]} -h #{db[:host]}:#{db[:port]} -o #{path}"
-      cmd << " -u '#{db[:user]}' -p '#{db[:password]}'" unless db[:user].empty?
+      cmd << " -u '#{db[:user]}' -p '#{db[:password]}'" unless (db[:user].nil? || db[:user].empty?)
       cmd << " > /dev/null"
     
       system(cmd)
