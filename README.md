@@ -20,6 +20,9 @@ backup jobs, that will be run in the defined interval.
         db: mongodb://user:password@host:port/database
         location: bucket_name/prefix
         versions: 5
+        compress_tar_file: False
+        temp_directory: /mnt/some_ebs_location/backups
+        cron: 0 22 * * 1-5
 
 The s3 section contains the credentials, to authenticate with AWS S3. The
 jobs section contains a list ob jobs, that will be executed in the given 
@@ -29,6 +32,22 @@ interval. Each job must contain the following keys:
 * **db** - Is a URI, that defines the database host, database name and auth credentials.
 * **location** - The location is the S3 bucket, where to put the dump and a prefix.
 * **versions** - Keep the latest X versions of the backup.
+* **compress_tar_file** - True/False A large backup might take too long to compress on smaller EC2 instances
+* **temp_directory** - (optional) Use this directory for storing temp dump and tar files. If not provided it will use system's temp directory
+* **cron** - 0 22 * * 1-5 (optional every day of the week at 22:00 (10pm).
+             If it's not provided interval is used instead
+
+Cron explained:
+
+|Field name   |Mandatory |Allowed values  |Allowed special characters|
+|:------------|:--------:|:---------------|:-------------------------|
+|Minutes      |Yes       |0-59            |* / , -                   |
+|Hours        |Yes       |0-23            |/ , -                     |
+|Day of month |Yes       |1-31            |* / , - ? L W             |
+|Month        |Yes       |1-12 or JAN-DEC |* / , -                   |
+|Day of week  |Yes       |0-6 or SUN-SAT  |* / , - ? L #             |
+|Year         |No        |1970–2099       |* / , -                   |
+
 
 Please consider, that the location option works like this:
 
