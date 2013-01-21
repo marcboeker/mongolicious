@@ -118,6 +118,18 @@ module Mongolicious
             max_attempts = 3
 
             begin
+              # While in production we would get frequent "Connection reset by peer" while uploading to S3
+              # retrying the upload would cause the begin block to be called after 30-40 minutes, therefore,
+              # we can't reuse the same socket as that one has timed out.
+              # http://scie.nti.st/2008/3/14/amazon-s3-and-connection-reset-by-peer for explanation on "connection
+              # reset by peer" and what you can do to fix the issue
+              #
+              # issue with fog 0.5.1 https://github.com/fog/fog/issues/327
+              # fixed with: https://github.com/fog/fog/commit/597acf03631d3c21442f036a0433a2aa24f98345
+              # Fog 0.5.1 was released on January 31 2011
+              # Fix was issued on May 25 2011
+              # Whenever there is connection reset fog would not set content length to the right value.
+
               etag = @storage.upload_part(s3[:bucket], key, upload_id, part_number, file_part)
             rescue Exception => exception
               attempts += 1
@@ -128,6 +140,9 @@ module Mongolicious
 
               Mongolicious.logger.error("Aborting upload! Error uploading part: #{part}")
               @filesystem.cleanup_parts(file_parts)
+
+              # tell S3 that we are aborting the upload.
+              @storage.abort_multipart_upload(s3[:bucket], key, upload_id)
 
               # There is nothing that we can do anymore
               # Exit this method with error code 0 so that subsequent jobs can fire as scheduled.

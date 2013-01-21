@@ -75,7 +75,7 @@ module Mongolicious
     # Complete a multipart upload
     #
     # @param [String] bucket Name of bucket to complete multipart upload for
-    # @param [String] key Name of objcet to complete multipart upload for
+    # @param [String] key Name of object to complete multipart upload for
     # @param [String] upload_id Id of upload to add part to
     # @param [String] parts Array of etags for parts
     #
@@ -84,6 +84,17 @@ module Mongolicious
       response = @con.complete_multipart_upload(bucket, key, upload_id, parts)
 
       return response
+    end
+
+    # Aborts a multipart upload
+    #
+    # @param [String] bucket Name of bucket to abort multipart upload on
+    # @param [String] key Name of object to abort multipart upload on
+    # @param [String] upload_id Id of upload to add part to
+    #
+    # @return [nil]
+    def abort_multipart_upload(bucket, key, upload_id)
+      @con.abort_multipart_upload(bucket, key, upload_id)
     end
 
     # Remove old versions of a backup.
