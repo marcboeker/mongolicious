@@ -7,9 +7,14 @@ jobs:
     db: mongodb://user:password@host:port/database
     location: bucket_name/prefix
     versions: 5
+    compress_tar_file: False
+    temp_directory: /mnt/some_ebs_location/backups
+    cron: 0 1 * * 0-6
 
   - interval: 1d
     db: mongodb://user:password@host:port/database2
     location: bucket_name/prefix_db2
     versions: 2
-                                              
+    compress_tar_file: True
+    temp_directory: /mnt/some_ebs_location/backups
+    cron: 0 2 * * 0-6
